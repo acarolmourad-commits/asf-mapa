@@ -3,113 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Mapa — Mapa Interativo dos Picos de Surf</title>
-<meta name="description" content="Mapa interativo dos picos de surf do litoral norte de SP. Satélite do app ASF — Associação de Surf Feminino.">
-<link rel="canonical" href="https://acarolmourad-commits.github.io/asf-mapa/">
+<title>ASF Mapa — Mapa interativo dos picos de surf</title>
+<meta name="description" content="Mapa interativo dos picos de surf do litoral norte de SP com nível, fundo e link direto para a previsão. Satélite do app ASF.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-:root{--azul:#0a4d68;--azul2:#088395;--areia:#f6f1e7;--coral:#ff6f61;--texto:#222}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--areia);color:var(--texto);line-height:1.6}
-header{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;padding:2rem 1rem;text-align:center}
-header h1{font-size:2rem;margin-bottom:.5rem}
-header p{opacity:.9;max-width:640px;margin:0 auto}
-nav{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);padding:.75rem 1rem;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;position:sticky;top:0;z-index:1001}
-nav a{color:var(--azul);text-decoration:none;font-weight:600;font-size:.8rem;padding:.35rem .65rem;border-radius:999px;border:1px solid var(--azul2)}
-nav a:hover{background:var(--azul2);color:#fff}
-main{max-width:1000px;margin:1.5rem auto;padding:0 1rem}
-#mapa{height:480px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:1}
-section{background:#fff;border-radius:12px;padding:1.5rem;margin-top:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-h2{color:var(--azul);margin-bottom:.75rem}
-.filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1rem}
-.filtros button{border:1px solid var(--azul2);background:#fff;color:var(--azul);border-radius:999px;padding:.4rem .8rem;cursor:pointer;font-weight:600;font-size:.8rem}
-.filtros button.ativo{background:var(--azul2);color:#fff}
-.cta{display:inline-block;background:var(--coral);color:#fff;padding:.8rem 1.6rem;border-radius:999px;text-decoration:none;font-weight:700;margin-top:1rem}
-footer{text-align:center;padding:2rem 1rem;color:#666;font-size:.85rem}
-footer a{color:var(--azul2)}
+:root{--rosa:#e63970;--areia:#fff5ee;--mar:#0b6e6e;--escuro:#12303a}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:var(--areia);color:var(--escuro)}
+header{background:linear-gradient(135deg,#0b6e6e,#00A8CC);color:#fff;padding:2.2rem 1rem;text-align:center}
+header h1{font-size:2rem}header p{opacity:.95;margin-top:.4rem;font-size:.95rem}
+nav{background:var(--escuro);display:flex;flex-wrap:wrap;justify-content:center;gap:.25rem;padding:.5rem;position:sticky;top:0;z-index:1000}
+nav a{color:#fff;text-decoration:none;padding:.4rem .65rem;border-radius:.5rem;font-size:.82rem}
+nav a:hover,nav a.ativo{background:var(--rosa)}
+#mapa{height:70vh;z-index:1}
+main{max-width:960px;margin:0 auto}
+.legenda{background:#fff;padding:1rem 1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;font-size:.85rem;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.legenda span{display:flex;align-items:center;gap:.4rem}
+.bolinha{width:14px;height:14px;border-radius:50%;display:inline-block}
+footer{background:var(--escuro);color:#cfe;padding:1.5rem;text-align:center;font-size:.85rem}
+footer a{color:#ff9ec0}
+.leaflet-popup-content a{color:var(--mar);font-weight:bold}
 </style>
 </head>
 <body>
-<header>
-<h1>🗺️ ASF Mapa</h1>
-<p>Mapa interativo dos picos de surf do litoral norte de São Paulo — do Araruama a Ubatuba, filtre por nível e descubra seu próximo pico.</p>
-</header>
+<header><h1>🗺️ ASF Mapa</h1><p>Todos os picos do litoral norte de SP em um mapa interativo</p></header>
 <nav>
-<a href="https://acarolmourad-commits.github.io/asf-app/">App ASF</a>
-<a href="https://acarolmourad-commits.github.io/asf-praias/">Praias</a>
-<a href="https://acarolmourad-commits.github.io/asf-previsao/">Previsão</a>
-<a href="https://acarolmourad-commits.github.io/asf-treino/">Treino</a>
-<a href="https://acarolmourad-commits.github.io/asf-eventos/">Eventos</a>
-<a href="https://acarolmourad-commits.github.io/asf-glossario/">Glossário</a>
-<a href="https://acarolmourad-commits.github.io/asf-seguranca/">Segurança</a>
-<a href="https://acarolmourad-commits.github.io/asf-comunidade/">Comunidade</a>
-<a href="https://acarolmourad-commits.github.io/asf-equipamento/">Equipamento</a>
-<a href="https://acarolmourad-commits.github.io/asf-quiz/">Quiz</a>
-<a href="https://acarolmourad-commits.github.io/asf-nutricao/">Nutrição</a>
-<a href="https://acarolmourad-commits.github.io/asf-viagens/">Viagens</a>
-<a href="https://acarolmourad-commits.github.io/asf-historia/">História</a>
-<a href="https://acarolmourad-commits.github.io/asf-bemestar/">Bem-estar</a>
-<a href="https://acarolmourad-commits.github.io/asf-diario/">Diário</a>
-<a href="https://acarolmourad-commits.github.io/asf-eco/">Eco</a>
-<a href="https://acarolmourad-commits.github.io/asf-mental/">Mental</a>
-<a href="https://acarolmourad-commits.github.io/asf-kids/">Kids</a>
-<a href="https://acarolmourad-commits.github.io/asf-sos/">SOS</a>
-<a href="https://acarolmourad-commits.github.io/asf-yoga/">Yoga</a>
-<a href="https://acarolmourad-commits.github.io/asf-volume/">Volume</a>
-<a href="https://acarolmourad-commits.github.io/asf-respira/">Respira</a>
-<a href="https://acarolmourad-commits.github.io/asf-ranking/">Ranking</a>
-<a href="https://acarolmourad-commits.github.io/asf-mercado/">Mercado</a>
-<a href="https://acarolmourad-commits.github.io/asf-mare/">Maré</a>
+<a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ App</a>
+<a href="https://acarolmourad-commits.github.io/asf-praias/">🏖️ Praias</a>
+<a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊 Previsão</a>
+<a href="https://acarolmourad-commits.github.io/asf-mare/">🌙 Maré</a>
+<a class="ativo" href="https://acarolmourad-commits.github.io/asf-mapa/">🗺️ Mapa</a>
+<a href="https://acarolmourad-commits.github.io/asf-treino/">💪 Treino</a>
+<a href="https://acarolmourad-commits.github.io/asf-diario/">📝 Diário</a>
+<a href="https://acarolmourad-commits.github.io/asf-yoga/">🧘‍♀️ Yoga</a>
+<a href="https://acarolmourad-commits.github.io/asf-nutricao/">🥗 Nutrição</a>
+<a href="https://acarolmourad-commits.github.io/asf-eventos/">📅 Eventos</a>
+<a href="https://acarolmourad-commits.github.io/asf-glossario/">📖 Glossário</a>
+<a href="https://acarolmourad-commits.github.io/asf-comunidade/">🌸 Comunidade</a>
+<a href="https://acarolmourad-commits.github.io/asf-seguranca/">🛟 Segurança</a>
+<a href="https://acarolmourad-commits.github.io/asf-sos/">🆘 SOS</a>
+<a href="https://acarolmourad-commits.github.io/asf-equipamento/">🏄 Equipamento</a>
+<a href="https://acarolmourad-commits.github.io/asf-quiz/">❓ Quiz</a>
+<a href="https://acarolmourad-commits.github.io/asf-eco/">🌱 Eco</a>
 </nav>
 <main>
-<div id="mapa"></div>
-<section>
-<h2>Filtrar picos por nível</h2>
-<div class="filtros">
-<button class="ativo" onclick="filtrar('todos',this)">Todos</button>
-<button onclick="filtrar('iniciante',this)">🌊 Iniciante</button>
-<button onclick="filtrar('intermediario',this)">🏄 Intermediário</button>
-<button onclick="filtrar('avancado',this)">🔥 Avançado</button>
+<div class="legenda">
+<span><i class="bolinha" style="background:#2e9e5b"></i>Iniciante</span>
+<span><i class="bolinha" style="background:#f4a259"></i>Intermediário</span>
+<span><i class="bolinha" style="background:#d7263d"></i>Avançado</span>
+<span>📍 Toque num pico para ver detalhes e previsão</span>
 </div>
-<p style="font-size:.85rem;color:#666">Toque nos marcadores para detalhes do pico. Combine com a <a href="https://acarolmourad-commits.github.io/asf-previsao/">Previsão</a> e a tábua de <a href="https://acarolmourad-commits.github.io/asf-mare/">Marés</a> antes de sair!</p>
-</section>
-<section>
-<h2>Explore a rede ASF</h2>
-<p>Detalhes das praias no guia de <a href="https://acarolmourad-commits.github.io/asf-praias/">Praias</a>, registre sua sessão no <a href="https://acarolmourad-commits.github.io/asf-diario/">Diário</a> e planeje surf trips em <a href="https://acarolmourad-commits.github.io/asf-viagens/">Viagens</a>.</p>
-<a class="cta" href="https://acarolmourad-commits.github.io/asf-app/">Abrir o App ASF</a>
-</section>
+<div id="mapa"></div>
 </main>
-<footer>ASF Mapa — parte da rede de sites satélite do <a href="https://acarolmourad-commits.github.io/asf-app/">App ASF</a></footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<footer>Parte do ecossistema <a href="https://acarolmourad-commits.github.io/asf-app/">ASF — Associação de Surf Feminino</a> · Dados: OpenStreetMap · Publicado via GitHub Pages</footer>
 <script>
 const picos=[
-{nome:'Maresias',lat:-23.8154,lng:-45.5590,nivel:'intermediario',desc:'O point mais famoso do litoral norte. Direitas e esquerdas potentes.'},
-{nome:'Praia da Baleia',lat:-23.7656,lng:-45.6536,nivel:'iniciante',desc:'Fundo de areia, ondas suaves — ideal para as primeiras sessões.'},
-{nome:'Camburi',lat:-23.7543,lng:-45.6180,nivel:'intermediario',desc:'Pico consistente com boas formações de swell sudeste.'},
-{nome:'Juquehy',lat:-23.7600,lng:-45.6960,nivel:'iniciante',desc:'Ondas longas e mansinhas, ambiente familiar.'},
-{nome:'Barra do Una',lat:-23.8050,lng:-45.7170,nivel:'intermediario',desc:'Banco de areia na foz do rio Una, ondas divertidas.'},
-{nome:'Praia da Fazenda',lat:-23.3430,lng:-44.8610,nivel:'iniciante',desc:'Ubatuba, mar tranquilo e visual incrível.'},
-{nome:'Itamambuca',lat:-23.4020,lng:-45.0080,nivel:'avancado',desc:'Ubatuba. Palco de campeonatos, ondas tubulares com swell sul.'},
-{nome:'Praia Vermelha do Norte',lat:-23.4530,lng:-45.0610,nivel:'avancado',desc:'Ubatuba. Pesada e potente, para quem já tem experiência.'},
-{nome:'Boracéia',lat:-23.5170,lng:-45.7420,nivel:'iniciante',desc:'Extensa faixa de areia com vários picos tranquilos.'},
-{nome:'Riviera de São Lourenço',lat:-23.7870,lng:-45.9610,nivel:'iniciante',desc:'Perto de SP, ótima para treino de fim de semana.'},
-{nome:'Praia do Tombo',lat:-24.0080,lng:-46.2970,nivel:'intermediario',desc:'Guarujá. Ondas consistentes, sede de etapas de competição.'},
-{nome:'São Sebastião (Guaecá)',lat:-23.8120,lng:-45.4420,nivel:'intermediario',desc:'Praia preservada com boas esquerdas.'}
-];
-const mapa=L.map('mapa').setView([-23.85,-45.55],9);
+{nome:'Praia da Baleia',lat:-23.7820,lon:-45.6690,nivel:'iniciante',cor:'#2e9e5b',dica:'Ondas suaves e previsíveis.'},
+{nome:'Camburizinho',lat:-23.7740,lon:-45.6380,nivel:'iniciante',cor:'#2e9e5b',dica:'Cantinho protegido.'},
+{nome:'Boracéia',lat:-23.7450,lon:-45.8400,nivel:'iniciante',cor:'#2e9e5b',dica:'Praia extensa, sem crowd.'},
+{nome:'Perequê-Açu',lat:-23.4280,lon:-45.0650,nivel:'iniciante',cor:'#2e9e5b',dica:'Enseada abrigada.'},
+{nome:'Lagoinha',lat:-23.5030,lon:-45.2020,nivel:'iniciante',cor:'#2e9e5b',dica:'Ondas amigáveis.'},
+{nome:'Maresias',lat:-23.8180,lon:-45.5630,nivel:'intermediário',cor:'#f4a259',dica:'Ondas consistentes.'},
+{nome:'Itamambuca',lat:-23.4020,lon:-45.0030,nivel:'intermediário',cor:'#f4a259',dica:'Palco de campeonatos.'},
+{nome:'Paúba',lat:-23.8110,lon:-45.5440,nivel:'intermediário',cor:'#f4a259',dica:'Menos cheia que Maresias.'},
+{nome:'Juquehy',lat:-23.7690,lon:-45.7360,nivel:'intermediário',cor:'#f4a259',dica:'Boa formação com SE.'},
+{nome:'Praia Brava (Caraguá)',lat:-23.6090,lon:-45.4180,nivel:'avançado',cor:'#d7263d',dica:'Ondas fortes e tubulares.'}];
+const mapa=L.map('mapa').setView([-23.65,-45.45],9);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(mapa);
-const cores={iniciante:'#2ecc71',intermediario:'#088395',avancado:'#e74c3c'};
-let marcadores=[];
-function desenhar(filtro){
-marcadores.forEach(m=>mapa.removeLayer(m));marcadores=[];
-picos.filter(p=>filtro==='todos'||p.nivel===filtro).forEach(p=>{
-const m=L.circleMarker([p.lat,p.lng],{radius:10,color:'#fff',weight:2,fillColor:cores[p.nivel],fillOpacity:.9}).addTo(mapa);
-m.bindPopup('<b>'+p.nome+'</b><br><i>'+p.nivel+'</i><br>'+p.desc+'<br><a href="https://acarolmourad-commits.github.io/asf-previsao/">Ver previsão →</a>');
-marcadores.push(m);
+picos.forEach(p=>{
+ L.circleMarker([p.lat,p.lon],{radius:10,color:'#fff',weight:2,fillColor:p.cor,fillOpacity:.95}).addTo(mapa)
+ .bindPopup(`<strong>${p.nome}</strong><br>Nível: ${p.nivel}<br>${p.dica}<br><a href="https://acarolmourad-commits.github.io/asf-previsao/">🌊 Ver previsão</a> · <a href="https://acarolmourad-commits.github.io/asf-praias/">🏖️ Guia da praia</a>`);
 });
-}
-function filtrar(n,btn){document.querySelectorAll('.filtros button').forEach(b=>b.classList.remove('ativo'));btn.classList.add('ativo');desenhar(n);}
-desenhar('todos');
 </script>
 </body>
 </html>
