@@ -22,6 +22,7 @@ input,select,textarea{padding:.5rem;border:1px solid #ddd;border-radius:10px;wid
 .xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002;z-index:20}
 footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 </style>
+<style>.faq details{background:#fff;border-radius:14px;padding:14px 18px;margin:10px auto;max-width:860px;box-shadow:0 2px 10px rgba(14,36,57,.06);text-align:left}.faq summary{font-weight:700;cursor:pointer;font-size:14.5px}.faq p{font-size:14px;margin-top:8px;color:#5A6B7A}.faq h2{font-size:19px;margin:28px auto 12px;max-width:860px;text-align:left}</style>
 <link rel="canonical" href="https://acarolmourad-commits.github.io/asf-mapa/">
 <!-- ========== SEO Padrão Google (rede ASF) ========== -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -38,6 +39,15 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASF Mapa — ASF">
 <meta name="twitter:description" content="Mapa interativo dos picos de surf do litoral norte de SP">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"ASF Mapa — Picos de surf do litoral norte de SP","url":"https://acarolmourad-commits.github.io/asf-mapa/","applicationCategory":"SportsApplication","operatingSystem":"Web","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"ASF — Associação Surf Feminino","url":"https://acarolmourad-commits.github.io/asf-app/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ASF App","item":"https://acarolmourad-commits.github.io/asf-app/"},{"@type":"ListItem","position":2,"name":"ASF Mapa","item":"https://acarolmourad-commits.github.io/asf-mapa/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quais picos de surf estão no mapa ASF?","acceptedAnswer":{"@type":"Answer","text":"O mapa mostra 8 picos do litoral norte de SP: Praia Grande e Toninhas (Ubatuba), Maresias, Camburi, Juquehy, Barra do Una, Praia Brava e Martim de Sá (Caraguatatuba)."}},{"@type":"Question","name":"Qual mapa é usado no ASF Mapa?","acceptedAnswer":{"@type":"Answer","text":"O mapa usa o OpenStreetMap, gratuito e colaborativo, com marcadores das coordenadas reais de cada pico de surf."}},{"@type":"Question","name":"Como escolher o pico de surf pelo mapa?","acceptedAnswer":{"@type":"Answer","text":"Clique no nome do pico para centralizar o mapa. Combine com a ASF Previsão para ver ondas, vento e maré antes de sair de casa."}}]}
+</script>
 <!-- ========== Fim SEO ========== -->
 
 <script type="application/ld+json">
@@ -90,6 +100,12 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <iframe id="map" style="width:100%;height:300px;border:0;border-radius:12px;margin-top:.6rem" loading="lazy"></iframe></div>
 <div class="card"><p>Detalhes de cada praia no <a href='https://acarolmourad-commits.github.io/asf-praias/'>ASF Praias</a> e condições na <a href='https://acarolmourad-commits.github.io/asf-previsao/'>ASF Previsão</a>.</p></div>
 <div class="card"><h2>🌐 Ecossistema ASF</h2><p>Este app faz parte da constelação ASF — Associação de Surf Feminino. Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. App principal: <a href="https://acarolmourad-commits.github.io/asf-app/">ASF App</a>.</p></div>
+<section class="faq">
+<h2>Perguntas frequentes</h2>
+<details><summary>Quais picos de surf estão no mapa ASF?</summary><p>O mapa mostra 8 picos do litoral norte de SP: Praia Grande e Toninhas (Ubatuba), Maresias, Camburi, Juquehy, Barra do Una, Praia Brava e Martim de Sá (Caraguatatuba).</p></details>
+<details><summary>Qual mapa é usado no ASF Mapa?</summary><p>O mapa usa o OpenStreetMap, gratuito e colaborativo, com marcadores das coordenadas reais de cada pico de surf.</p></details>
+<details><summary>Como escolher o pico de surf pelo mapa?</summary><p>Clique no nome do pico para centralizar o mapa. Combine com a ASF Previsão para ver ondas, vento e maré antes de sair de casa.</p></details>
+</section>
 </main>
 <div class="xp">⭐ XP: <span id="xp">0</span></div>
 <footer>ASF — Associação de Surf Feminino · Feito com 🌊 e 💜 · <a href="https://acarolmourad-commits.github.io/">hub</a> · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
