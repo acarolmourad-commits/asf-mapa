@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Mapa — ASF</title>
-<meta name="description" content="Mapa interativo dos picos de surf do litoral norte de SP">
+<title>ASF Mapa — Picos de Surf do Litoral Norte de SP | ASF</title>
+<meta name="description" content="Mapa interativo com 8 picos de surf do litoral norte de SP — Ubatuba, São Sebastião e Caraguatatuba. Nível de cada onda, melhor época e condições atualizadas.">
 <style>
 :root{--rosa:#ff4d8d;--roxo:#7b2ff7;--areia:#fff5ec;--mar:#00c2cb}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
@@ -33,12 +33,12 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ASF — Associação de Surf Feminino">
 <meta property="og:title" content="ASF Mapa — ASF">
-<meta property="og:description" content="Mapa interativo dos picos de surf do litoral norte de SP">
+<meta property="og:description" content="Mapa interativo com 8 picos de surf do litoral norte de SP — Ubatuba, São Sebastião e Caraguatatuba. Nível de cada onda, melhor época e condições atualizadas.">
 <meta property="og:url" content="https://acarolmourad-commits.github.io/asf-mapa/">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASF Mapa — ASF">
-<meta name="twitter:description" content="Mapa interativo dos picos de surf do litoral norte de SP">
+<meta name="twitter:description" content="Mapa interativo com 8 picos de surf do litoral norte de SP — Ubatuba, São Sebastião e Caraguatatuba. Nível de cada onda, melhor época e condições atualizadas.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"ASF Mapa — Picos de surf do litoral norte de SP","url":"https://acarolmourad-commits.github.io/asf-mapa/","applicationCategory":"SportsApplication","operatingSystem":"Web","inLanguage":"pt-BR","isPartOf":{"@type":"WebSite","name":"ASF — Associação Surf Feminino","url":"https://acarolmourad-commits.github.io/asf-app/"}}
 </script>
@@ -48,12 +48,10 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quais picos de surf estão no mapa ASF?","acceptedAnswer":{"@type":"Answer","text":"O mapa mostra 8 picos do litoral norte de SP: Praia Grande e Toninhas (Ubatuba), Maresias, Camburi, Juquehy, Barra do Una, Praia Brava e Martim de Sá (Caraguatatuba)."}},{"@type":"Question","name":"Qual mapa é usado no ASF Mapa?","acceptedAnswer":{"@type":"Answer","text":"O mapa usa o OpenStreetMap, gratuito e colaborativo, com marcadores das coordenadas reais de cada pico de surf."}},{"@type":"Question","name":"Como escolher o pico de surf pelo mapa?","acceptedAnswer":{"@type":"Answer","text":"Clique no nome do pico para centralizar o mapa. Combine com a ASF Previsão para ver ondas, vento e maré antes de sair de casa."}}]}
 </script>
-<!-- ========== Fim SEO ========== -->
-
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ItemList","name":"Picos de surf do litoral norte de São Paulo","itemListElement":[
 {"@type":"ListItem","position":1,"item":{"@type":"Place","name":"Praia Grande, Ubatuba","geo":{"@type":"GeoCoordinates","latitude":-23.437,"longitude":-45.064}}},
-{"@type":"ListItem","position":2,"item":{"@type":"Place","name":"Praia das Toninhas, Ubatuba","geo":{"@type":"GeoCoordinates","latitude":-23.453,"longitude":-45.055}}},
+{"@type":"ListItem","position":2,"item":{"@type":"Place","name":"Toninhas, Ubatuba","geo":{"@type":"GeoCoordinates","latitude":-23.453,"longitude":-45.055}}},
 {"@type":"ListItem","position":3,"item":{"@type":"Place","name":"Maresias, São Sebastião","geo":{"@type":"GeoCoordinates","latitude":-23.798,"longitude":-45.556}}},
 {"@type":"ListItem","position":4,"item":{"@type":"Place","name":"Camburi, São Sebastião","geo":{"@type":"GeoCoordinates","latitude":-23.763,"longitude":-45.473}}},
 {"@type":"ListItem","position":5,"item":{"@type":"Place","name":"Juquehy, São Sebastião","geo":{"@type":"GeoCoordinates","latitude":-23.700,"longitude":-45.404}}},
@@ -62,9 +60,8 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 {"@type":"ListItem","position":8,"item":{"@type":"Place","name":"Martim de Sá, Caraguatatuba","geo":{"@type":"GeoCoordinates","latitude":-23.612,"longitude":-45.395}}}
 ]}
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SportsOrganization","name":"ASF — Associação de Surf Feminino","sport":"Surf"}
-</script>
+<!-- ========== Fim SEO ========== -->
+
 </head>
 <body>
 <header><h1>🗺️ ASF Mapa</h1><p>Mapa interativo dos picos de surf do litoral norte de SP</p></header>
@@ -112,6 +109,18 @@ footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 <iframe id="map" style="width:100%;height:300px;border:0;border-radius:12px;margin-top:.6rem" loading="lazy"></iframe></div>
 <div class="card"><p>Detalhes de cada praia no <a href='https://acarolmourad-commits.github.io/asf-praias/'>ASF Praias</a> e condições na <a href='https://acarolmourad-commits.github.io/asf-previsao/'>ASF Previsão</a>.</p></div>
 <div class="card"><h2>🌐 Ecossistema ASF</h2><p>Este app faz parte da constelação ASF — Associação de Surf Feminino. Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. App principal: <a href="https://acarolmourad-commits.github.io/asf-app/">ASF App</a>.</p></div>
+<div class="card"><h2>🌊 Guia dos 8 picos</h2>
+<p><strong>Praia Grande (Ubatuba)</strong> — beach break extenso, ondas para todos os níveis, funciona com swell de S/SE.</p>
+<p><strong>Toninhas (Ubatuba)</strong> — enseada abrigada, ideal para iniciantes e longboard.</p>
+<p><strong>Maresias (São Sebastião)</strong> — beach break potente, palco de etapas do circuito mundial; intermediário a avançado.</p>
+<p><strong>Camburi (São Sebastião)</strong> — praia de tombo com direitas clássicas; intermediário.</p>
+<p><strong>Juquehy (São Sebastião)</strong> — beach break longo e consistente, bom para todos os níveis e escolinhas.</p>
+<p><strong>Barra do Una (São Sebastião)</strong> — restinga na foz do Rio Una, junto ao Parque Estadual da Serra do Mar; ondas menores e ambiente preservado.</p>
+<p><strong>Praia Brava (Caraguatatuba)</strong> — praia oceânica exposta, ondas fortes e correntes; para experientes.</p>
+<p><strong>Martim de Sá (Caraguatatuba)</strong> — enseada com esquerda tradicional no canto; todos os níveis.</p>
+<p style="font-size:.85rem;color:#888">Melhor época: outono e inverno (abril a setembro), com swells de sul gerados por frentes frias. Atualizado em setembro de 2026 pela equipe ASF.</p></div>
+<div class="card"><h2>📚 Fontes e referências</h2>
+<p>Previsão oceanográfica: <a href="https://www.marinha.mil.br/chm/" rel="noopener">Centro de Hidrografia da Marinha do Brasil</a> · Previsão meteorológica: <a href="http://sistemas.cptec.inpe.br/" rel="noopener">CPTEC/INPE</a> · Base cartográfica: <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a></p></div>
 <section class="faq">
 <h2>Perguntas frequentes</h2>
 <details><summary>Quais picos de surf estão no mapa ASF?</summary><p>O mapa mostra 8 picos do litoral norte de SP: Praia Grande e Toninhas (Ubatuba), Maresias, Camburi, Juquehy, Barra do Una, Praia Brava e Martim de Sá (Caraguatatuba).</p></details>
